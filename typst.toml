@@ -1,7 +1,5 @@
-# for a description of available keys, see https://github.com/typst/packages/?tab=readme-ov-file#package-format
-
 [package]
-name = "vub-huisstijl"
+name = "stv-vub-huisstijl"
 version = "0.1.0"
 entrypoint = "src/lib.typ"
 authors = ["Wannes Malfait <https://github.com/WannesMalfait>"]
@@ -15,7 +13,7 @@ disciplines = []
 # compiler = ""
 exclude = [".github", "docs", "scripts", "tests", ".typstignore", "Justfile"]
 
-# [template]
-# path = "template"
-# entrypoint = "main.typ"
-# thumbnail = "thumbnail.png"
+[template]
+path = "template"
+entrypoint = "main.typ"
+thumbnail = "thumbnail.png"
