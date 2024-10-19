@@ -39,12 +39,8 @@
   title: "Title of the thesis",
   subtitle: "An optional subtitle",
   pretitle: "Graduation thesis submitted in partial fulfillment of the requirements for the degree of Master of Science in Mathematics",
-  authors: (
-    "Jane Doe",
-  ),
-  promotors: (
-    "John Smith",
-  ),
+  authors: ("Jane Doe",),
+  promotors: ("John Smith",),
   faculty: "Sciences and Bio-Engineering Sciences",
   date: datetime.today().display("[month repr:long] [day], [year]"),
 ) = {
