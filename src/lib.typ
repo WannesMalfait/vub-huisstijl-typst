@@ -1,4 +1,4 @@
-#import "@preview/cetz:0.3.0"
+#import "@preview/cetz:0.4.2"
 
 #let vub-orange = cmyk(
   0%,
@@ -17,18 +17,9 @@
 #let vub-triangle = cetz.canvas({
   import cetz.draw: *
   line(
-    (
-      0,
-      0,
-    ),
-    (
-      0,
-      triangle-height,
-    ),
-    (
-      -10mm,
-      triangle-height,
-    ),
+    (0, 0),
+    (0, triangle-height),
+    (-10mm, triangle-height),
     close: true,
     fill: vub-orange,
     stroke: none,
@@ -44,112 +35,109 @@
   faculty: "Sciences and Bio-Engineering Sciences",
   date: datetime.today().display("[month repr:long] [day], [year]"),
 ) = {
-
   set document(
     author: authors,
     title: title,
   )
 
-  set page(margin: (
-    left: 18mm,
-    top: 20mm,
-    right: 10mm,
-  ))
-  set text(font: (
-    "TeX Gyre Adventor",
-    "Roboto",
-  ))
-  set par(
-    linebreaks: "optimized",
-    // We adjust it manually
-    spacing: 0pt,
-  )
+  {
+    set page(margin: (
+      left: 18mm,
+      top: 20mm,
+      right: 10mm,
+    ))
+    set text(font: ("TeX Gyre Adventor", "Roboto"))
+    set par(
+      linebreaks: "optimized",
+      // We adjust it manually
+      spacing: 0pt,
+    )
 
-  // First the top part with the vub logo and triangle
-  place(
-    top + left,
-    image(
-      "/assets/vub_logo_cmyk.svg",
-      width: 5.66cm,
-    ),
-  )
+    // First the top part with the vub logo and triangle
+    place(
+      top + left,
+      image(
+        "/assets/vub_logo_cmyk.svg",
+        width: 5.66cm,
+      ),
+    )
 
-  place(
-    top + right,
-    vub-triangle,
-  )
+    place(
+      top + right,
+      vub-triangle,
+    )
 
-  // Account for space of triangle
-  v(triangle-height)
+    // Account for space of triangle
+    v(triangle-height)
 
-  v(1fr)
+    v(1fr)
 
-  // Title + author + date
-  h(25mm)
-  pad(x: 29mm)[
-    #par(leading: 0.3em // Make it a bit more tight
-    )[
+    // Title + author + date
+    h(25mm)
+    pad(x: 29mm)[
+
+      #par(leading: 0.3em)[#text(
+          size: 9pt,
+          fill: vub-orange,
+          pretitle,
+        )
+      ]
+
+      #v(5mm)
+
+      #par(leading: 0.3em)[#text(
+          size: 24.88pt,
+          fill: vub-blue,
+          strong(
+            upper(title),
+          ),
+        )
+      ]
+      #v(5mm)
 
       #text(
-        size: 9pt,
+        size: 17.28pt,
+        fill: vub-blue,
+        subtitle,
+      )
+
+      #v(3cm)
+
+      #text(
+        size: 12pt,
         fill: vub-orange,
-        pretitle,
+        authors.join(", "),
+      )
+      #v(5mm)
+
+      #text(
+        size: 12pt,
+        fill: vub-blue,
+        date,
+      )
+    ]
+
+    v(1fr)
+
+    // Promotors + faculty
+    h(25mm)
+    pad(x: 29mm)[
+      #text(
+        size: 10pt,
+        fill: vub-orange,
+        promotors.join(", "),
       )
 
       #v(5mm)
 
       #text(
-        size: 24.88pt,
+        size: 10pt,
         fill: vub-blue,
-        strong(
-          upper(title),
-        ),
+        strong(faculty),
       )
     ]
-    #v(5mm)
-
-    #text(
-      size: 17.28pt,
-      fill: vub-blue,
-      subtitle,
-    )
-
-    #v(3cm)
-
-    #text(
-      size: 12pt,
-      fill: vub-orange,
-      authors.join(", "),
-    )
-    #v(5mm)
-
-    #text(
-      size: 12pt,
-      fill: vub-blue,
-      date,
-    )
-  ]
-
-  v(1fr)
-
-  // Promotors + faculty
-  h(25mm)
-  pad(x: 29mm)[
-    #text(
-      size: 10pt,
-      fill: vub-orange,
-      promotors.join(", "),
-    )
-
-    #v(5mm)
-
-    #text(
-      size: 10pt,
-      fill: vub-blue,
-      strong(faculty),
-    )
-  ]
 
 
-  pagebreak(weak: true)
+    pagebreak(weak: true)
+  }
 }
