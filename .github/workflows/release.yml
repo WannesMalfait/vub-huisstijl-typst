@@ -19,19 +19,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Probe runner package cache
-        uses: awalsh128/cache-apt-pkgs-action@v1
+      - name: Install just
+        uses: taiki-e/install-action@v2
         with:
-          packages: cargo
-          version: 1.0
-
-      - name: Install just from crates.io
-        uses: baptiste0928/cargo-install@v3
-        with:
-          crate: just
+          tool: just
 
       - name: Setup typst
-        uses: typst-community/setup-typst@v3
+        uses: typst-community/setup-typst@v4
         with:
           typst-version: latest
 
@@ -47,7 +41,9 @@ jobs:
           fi
 
       - name: Build package
-        run: just package out
+        run: |
+          just doc
+          just package out
 
       - name: Checkout package registry
         uses: actions/checkout@v4
