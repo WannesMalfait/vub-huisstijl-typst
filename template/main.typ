@@ -1,4 +1,4 @@
-#import "@preview/stv-vub-huisstijl:0.1.0": vub-titlepage
+#import "@preview/stv-vub-huisstijl:0.1.1": vub-titlepage
 
 // Adapt the default arguments to your needs.
 #vub-titlepage(

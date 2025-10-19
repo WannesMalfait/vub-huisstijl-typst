@@ -1,6 +1,6 @@
 [package]
 name = "stv-vub-huisstijl"
-version = "0.1.0"
+version = "0.1.1"
 entrypoint = "src/lib.typ"
 authors = ["Wannes Malfait <https://github.com/WannesMalfait>"]
 license = "MIT"
