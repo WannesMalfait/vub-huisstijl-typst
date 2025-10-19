@@ -1,5 +1,6 @@
 name: Package and push to registry repo
 on:
+  workflow_dispatch:
   push:
     tags: [ v* ]
 
